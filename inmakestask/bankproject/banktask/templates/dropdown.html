@@ -1,0 +1,120 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!-- <meta charset="UTF-8">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>DropDown</title>-->
+
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class="container">-->
+<!--  <div class="card body">-->
+<!--    <br/>-->
+<!--    <br/>-->
+<!--    <br/>-->
+
+<!--    <div class="row">-->
+<!--        <div class="col-md-4">-->
+
+<!--       Choose a District:-->
+<!--            <select name="district"  class="form-control">-->
+<!--                <option value="0">&#45;&#45;Select District&#45;&#45;</option>-->
+<!--                {% for result1 in showdist  %}-->
+<!--                    <option value="{{result1.id }}">{{result1.districtname}}</option>-->
+<!--                {% endfor %}-->
+<!--            </select>-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <br/>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="col-md-4">&ndash;&gt;-->
+<!--            <label for="city">Choose a City:</label>-->
+<!--            <select name="cit" id="city" class="form-control">-->
+<!--                <option value="0">&#45;&#45;Select City&#45;&#45;</option>-->
+<!--                {% for item in citycontext  %}-->
+<!--                <option value="{{ item.distid_id }}">{{ item.cityname }}</option>-->
+<!--                {% endfor %}-->
+<!--            </select>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+
+
+<!--&lt;!&ndash;<script>&ndash;&gt;-->
+
+<!--&lt;!&ndash;$(document).ready(function(){&ndash;&gt;-->
+
+<!--&lt;!&ndash; var District = $("#district");&ndash;&gt;-->
+<!--&lt;!&ndash; var City = $("#City");&ndash;&gt;-->
+<!--&lt;!&ndash; var $options = City.find('option');&ndash;&gt;-->
+<!--&lt;!&ndash; District.on('change',function(){&ndash;&gt;-->
+<!--&lt;!&ndash;    City.html($options.filter('[value="'+ this.value  +'"]'));&ndash;&gt;-->
+<!--&lt;!&ndash; }).trigger('change');&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;});&ndash;&gt;-->
+<!--&lt;!&ndash;</script>&ndash;&gt;-->
+<!--</body>-->
+<!--</html>-->
+
+<html>
+<select id='district' name ='adist' onchange='districtChanged(this.value);'>
+<option value=''>Select District</option>
+<option value='Ernakulam'>Ernakulam</option>
+<option value='Palakkad'>Palakkad</option>
+<option value='Thrissur'>Thrissur</option>
+</select>
+&nbsp;&nbsp;
+<select id='city' name ='acity' onchange='cityChanged(this.value);'>
+<option value=''>Select City</option>
+</select>
+<script type="text/javascript">
+var cityErnakulam=["Edappilly", "Paravur", "Cochin"];
+var cityPalakkad=["Olavacode", "Malampuzha", "Chittoor"];
+var cityThrissur=["Chalakkudy", "Ollur", "Irinjalakkuda"];
+
+
+function districtChanged(district)
+{
+var selectCity = document.getElementById('city');
+var ln = selectCity.length - 1;
+while (ln > 0)
+{
+selectCity.remove(1); //Remove all but "Select State"
+ln--;
+}
+
+
+var cityArray;
+
+switch(district)
+{
+case "Ernakulam":
+cityArray=cityErnakulam
+break;
+case "Palakkad":
+cityArray=cityPalakkad
+break;
+case "England":
+cityArray=cityThrissur
+break;
+default:
+}
+
+for (i = 0; i < cityArray.length; i++)
+{
+var option = document.createElement('option');
+option.text = cityArray[i];
+option.value = cityArray[i];
+selectCity.add(option);
+}
+}
+</script>
+</html>

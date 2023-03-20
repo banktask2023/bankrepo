@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Application</title>
+</head>
+<body>
+<h1>Application Form</h1>
+<form action="{% url 'final' %} " method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
+    {% csrf_token %}
+    Enter Your Name <input type ="text" name="aname" placeholder="Name"><br><br>
+    Enter Your DOB  <input type ="date" name="adob" placeholder="Date Of Birth"><br><br>
+    Enter Your Age  <input type ="number" name="aage" placeholder="Age"><br><br>
+    Enter Your Gender  <input type="radio" id="male" name="agender" value="Male"><label for="male">Male</label>
+                    <input type="radio" id="female" name="agender" value="Female"><label for="female">Female</label><br><br>
+    Enter Your Contact  <input type ="number" name="acontact" placeholder="Phone Number"><br><br>
+    Enter Your Mail Id  <input type ="email" name="amail" placeholder="Email"><br><br>
+    Enter Your Address  <input type ="text" name="aaddress" placeholder="Address"><br><br>
+    Enter the District and the corresponding City<br>
+    {% include 'dropdown.html' %}
+    <br><br>
+    Enter the Account Type
+    <select name="aaccount" id="account">
+        <option value="" selected="selected">Select Account Type</option>
+        <option value="current">Current Account</option>
+        <option value="savings">Savings Account</option>
+        <option value="demat">Demat Account</option>
+    </select>
+    <br><br>
+    Materials Provided<br>
+    <label><input type="checkbox">Debit Card</label>
+    <label><input type="checkbox">Credit Card</label><br>
+    <label><input type="checkbox">CheckBook</label>
+    <label><input type="checkbox">Pass Book</label>
+        <br><br>
+    <input type="submit" value = "APPLY" >
+</form>
+
+{% for msg in messages %}
+<h2>{{msg}}</h2>
+{% endfor %}
+<form action="{% url 'logout' %} " method="post">
+    {% csrf_token %}
+    <br>
+    <br>
+    <a href="logout"><input type="submit" value = "LOGOUT" ></a>
+</form>
+
+</body>
+</html>

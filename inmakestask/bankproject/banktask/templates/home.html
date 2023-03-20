@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<h2>Welcome Home</h2>
+
+<form action="{% url 'application' %}" method="post">
+        {% csrf_token %}
+        <h2>Click Submit to display the application form</h2>
+        <br>
+        <br>
+        <input type ="submit" >
+    </form>
+
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+<h1>Register Page</h1>
+<form action="{% url 'register' %}" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
+    {% csrf_token %}
+    Username<input type ="text" name="username" placeholder="Enter ur Username"><br><br>
+    Password <input type ="password" name="password" placeholder="Enter ur Password"><br><br>
+    Password Again <input type ="password" name="cpassword" placeholder="Enter ur Password"><br><br><br>
+            <button type ="submit" >REGISTER</button>
+</form>
+
+<br>
+<br>
+Click here to <a class="btn btn-primary" href="/login">Login</a>
+
+{% for msg in messages %}
+<h2>{{msg}}</h2>
+{% endfor %}
+
+</body>
+
+</html>

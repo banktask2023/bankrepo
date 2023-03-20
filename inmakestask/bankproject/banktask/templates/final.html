@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Final Page</title>
+</head>
+<body>
+<h1>!!!!!Application form Accepted Successfully!!!!!</h1>
+<h4>Please find below ur details</h4>
+<h4>Name : {{aname}}</h4>
+<h4>DOB : {{adob}}</h4>
+<h4>Age : {{aage}}</h4>
+<form action="{% url 'index' %} " method="post">
+    {% csrf_token %}
+    <br>
+    <br>
+    <a href="index"><input type="submit" value = "HOME" ></a>
+</form>
+</body>
+</html>
